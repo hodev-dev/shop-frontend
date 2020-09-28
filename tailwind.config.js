@@ -17,7 +17,11 @@ module.exports = {
 
       black: '#000',
       white: '#fff',
-
+      dark: {
+        100: '#343434',
+        200: '#242426',
+        300: "#1A1B1C"
+      },
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -149,6 +153,7 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '84': '26rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundImage: {
@@ -288,6 +293,8 @@ module.exports = {
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
+      half: '50vh',
+      sixty: '60vh',
     }),
     inset: {
       '0': '0',
@@ -353,6 +360,7 @@ module.exports = {
     },
     minWidth: {
       '0': '0',
+      '16': '16.6%',
       full: '100%',
     },
     objectPosition: {
