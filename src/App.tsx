@@ -2,28 +2,29 @@ import React, { useEffect } from 'react';
 import { FaSteamSymbol, FaPlaystation, FaXbox, FaTelegram, FaInstagram, FaWhatsapp, FaAppleAlt, FaApple } from "react-icons/fa";
 import Card from './components/Card';
 import './assets/css/tailwind.css';
-
+const LOGO = require('./assets/img/logo/LOGO.svg');
 const App = () => {
 
   return (
     <div className={"w-full h-auto bg-dark-300"}>
-      <div className={"flex w-full h-16 bg-dark-300"}>
+      <div className={"flex items-center w-full h-20 bg-dark-300"}>
         <div className={"flex items-center justify-center w-2/12 h-16"}>
-          <div className={"flex items-center justify-center w-10 h-10 text-3xl font-semibold text-indigo-600 bg-white rounded-lg"}>
-            <FaTelegram />
+          <div className={"flex items-center justify-center w-12 h-12 text-3xl font-semibold text-indigo-600 bg-white rounded-lg hover:bg-indigo-600 hover:text-white"}>
+            <FaTelegram size={32} />
           </div>
-          <div className={"flex items-center justify-center w-10 h-10 ml-5 text-3xl font-semibold text-pink-600 bg-white rounded-lg"}>
-            <FaInstagram />
+          <div className={"flex items-center justify-center w-12 h-12 ml-5 text-3xl font-semibold text-pink-600 bg-white rounded-lg hover:bg-pink-600 hover:text-white"}>
+            <FaInstagram size={32} />
           </div>
-          <div className={"flex items-center justify-center w-10 h-10 ml-5 text-3xl font-semibold text-green-800 bg-white rounded-lg"}>
-            <FaWhatsapp />
+          <div className={"flex items-center justify-center w-12 h-12 ml-5 text-3xl font-semibold text-green-800 bg-white rounded-lg hover:bg-green-600 hover:text-white"}>
+            <FaWhatsapp size={32} />
           </div>
         </div>
-        <div className={"flex items-center justify-center w-8/12 h-16"}>
+        <div className={"flex items-center justify-center w-8/12 h-16 opacity-50"}>
           <input className={"w-8/12 h-12 p-5 text-3xl text-gray-300 rounded-lg outline-none bg-dark-100"} type="text" />
         </div>
         <div className={"flex items-center justify-center w-2/12 h-16"}>
-          <div className={"flex items-center justify-center w-32 h-12 text-3xl font-semibold text-black bg-white rounded-lg"}>SZS</div>
+          <div className={"flex items-center justify-center w-32 h-12 text-3xl font-extrabold text-white rounded-lg"}>GiftBoy</div>
+          <img className={"w-16 h-16"} src={LOGO} />
         </div>
       </div>
       <div className={"flex w-full bg-contain h-sixty bg-dark-300"}>
@@ -48,7 +49,7 @@ const App = () => {
         <h2 className={"text-3xl text-white"}>تخفیف ویژه</h2>
         <h4 className={"flex-1 text-white text-1xl"}>موارد بیشتر</h4>
       </div>
-      <div className={"flex w-full h-auto p-8 overflow-x-scroll border border-black bg-dark-200"}>
+      <div dir="rtl" className={"flex w-full h-auto p-8 overflow-x-scroll border border-black bg-dark-200"}>
         <Card />
         <Card />
         <Card />
@@ -63,7 +64,7 @@ const App = () => {
         <h2 className={"text-3xl text-white"}>تخفیف ویژه</h2>
         <h4 className={"flex-1 text-white text-1xl"}>موارد بیشتر</h4>
       </div>
-      <div className={"flex w-full h-auto p-8 overflow-x-scroll border border-black "}>
+      <div dir="rtl" className={"flex w-full h-auto p-8 overflow-x-scroll border border-black "}>
         <Card />
         <Card />
         <Card />
