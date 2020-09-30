@@ -10,6 +10,7 @@ import './assets/css/tailwind.css';
 // pages
 import Home from './pages/Home';
 import GiftCards from './pages/GiftCards';
+import Login from './pages/Login';
 
 // global state
 const store = createStore(reducers);
@@ -20,6 +21,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/" component={Home} exact />
+          <Route path="/login" component={Login} exact />
           <Route path="/giftcards" component={GiftCards} />
         </Switch>
       </Router>
