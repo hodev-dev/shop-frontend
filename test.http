@@ -1,1 +1,5 @@
-POST https://api.netlify.com/build_hooks/5f74a7a0fae2fd0089b71bf5
+POST http://localhost:8000/login
+{
+  email: "hodev.dev@gmail.com",
+  password: 123456
+}

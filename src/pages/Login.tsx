@@ -1,8 +1,27 @@
-import React from 'react'
-import Header from '../components/Header'
+import axios, { AxiosError, AxiosResponse } from 'axios';
+import React, { useEffect } from 'react';
+import Header from '../components/Header';
 const LOGO = require('../assets/img/logo/LOGO.svg');
 
 const Login = () => {
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/sanctum/csrf-cookie').then(response => {
+      axios.get('http://localhost:8000/logout').then((logout: AxiosResponse) => {
+        console.log({ logout });
+      });
+      axios.post('http://localhost:8000/login/', { email: 'test@mail.com', password: '123456' }).then((loginResponse: AxiosResponse) => {
+        console.log({ loginResponse });
+        axios.get('http://localhost:8000/api/user/').then((users: AxiosResponse) => {
+          console.log({ users });
+        });
+      }).catch((err: AxiosError) => {
+        console.log({ err });
+      });
+    });
+  }, [])
+
   return (
     <>
       <div className={"flex flex-col items-center justify-start w-full h-screen bg-dark-300"}>
