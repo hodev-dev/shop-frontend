@@ -31,7 +31,7 @@ const Header = () => {
         </div>
         <Link to={"/"} className={"flex items-center justify-center w-2/12 h-16 "}>
           <div className={"flex items-center justify-center w-32 h-12 text-3xl font-extrabold text-white rounded-lg"}>MaxGift</div>
-          <img className={"w-16 h-16"} src={LOGO} alt="logo" />
+          <img className={"h-16 w-16w"} src={LOGO} alt="logo" />
         </Link>
       </div>
     </>

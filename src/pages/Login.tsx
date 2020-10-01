@@ -1,8 +1,5 @@
 import React from 'react'
-import Collection from '../components/Collection'
-import GiftPanel from '../components/GiftPanel'
 import Header from '../components/Header'
-import Hero from '../components/Hero'
 const LOGO = require('../assets/img/logo/LOGO.svg');
 
 const Login = () => {

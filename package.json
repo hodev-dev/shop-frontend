@@ -55,6 +55,8 @@
     ]
   },
   "devDependencies": {
+    "react-context-devtool": "^2.0.0",
+    "redux-devtools-extension": "^2.13.8",
     "webpack-cli": "^3.3.12"
   }
 }

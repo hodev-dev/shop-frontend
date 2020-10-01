@@ -1,19 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createStore } from 'redux';
-import { Provider } from 'react-redux'
-import reducers, { IApplicationState } from './reducers/rootReducer';
-
+import { composeWithDevTools } from 'redux-devtools-extension';
 // style
 import './assets/css/tailwind.css';
-
+import GiftCards from './pages/GiftCards';
 // pages
 import Home from './pages/Home';
-import GiftCards from './pages/GiftCards';
 import Login from './pages/Login';
+import reducers, { IApplicationState } from './reducers/rootReducer';
+
+
+
 
 // global state
-const store = createStore(reducers);
+const store = createStore<IApplicationState, any, any, any>(reducers, composeWithDevTools());
 
 const App = () => {
   return (

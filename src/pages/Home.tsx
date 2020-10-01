@@ -1,15 +1,12 @@
 import React from 'react';
-import Header from '../components/Header';
-import GiftPanel from '../components/GiftPanel';
-import Hero from '../components/Hero';
 import Collection from '../components/Collection';
-import { shallowEqual, useSelector, useDispatch } from 'react-redux';
-import { IApplicationState } from '../reducers/rootReducer';
-import { Add } from '../actions/counterAction';
+import GiftPanel from '../components/GiftPanel';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
 
 
 const Home = () => {
-  const counter = useSelector<IApplicationState>((state) => state.counterReducer);
+  // const counter = useSelector<IApplicationState>((state) => state.counterReducer);
 
   return (
     <div className={"w-full h-auto bg-dark-300"}>
