@@ -1,10 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import Header from '../components/Header';
+import { Axios } from '../helper/axios_config';
 const LOGO = require('../assets/img/logo/LOGO.svg');
 
 const Login = () => {
-  axios.defaults.withCredentials = true;
 
   const [_email, setEmail] = useState<string | null>('');
   const [_password, setPassword] = useState<string | null>('');
@@ -19,12 +18,12 @@ const Login = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    await axios.get('http://localhost:8000/sanctum/csrf-cookie');
-    const login_request = await axios.post('http://localhost:8000/login/', { email: _email, password: _password });
+    const login_request = await Axios.post('/login', { email: _email, password: _password });
     console.log({ login_request });
   }
+
   const logOut = async () => {
-    const logout = await axios.get('http://localhost:8000/logout');
+    const logout = await Axios.get('http://localhost:8000/logout');
     console.log(logout);
   }
 
