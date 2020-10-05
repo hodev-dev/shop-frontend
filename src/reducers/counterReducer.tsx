@@ -4,16 +4,16 @@ interface I_Action {
   payload?: any
 }
 // initState types
-export interface I_CounterReducer {
+export interface ICounterReducer {
   count: number;
 }
 
 // initState
-const initState: I_CounterReducer = {
+const initState: ICounterReducer = {
   count: 0
 };
 
-const counterReducer = (state = initState, action: I_Action): I_CounterReducer => {
+const counterReducer = (state = initState, action: I_Action): ICounterReducer => {
   switch (action.type) {
     case 'INCREMENT':
       return { count: state.count + 1 };
@@ -24,4 +24,4 @@ const counterReducer = (state = initState, action: I_Action): I_CounterReducer =
   }
 }
 
-export { counterReducer }
+export default counterReducer;

@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
-import { counterReducer, I_CounterReducer } from './counterReducer';
+import authReducer, { IauthReducer } from './authReducer';
+import counterReducer, { ICounterReducer } from './counterReducer';
 
 export interface IApplicationState {
-  counterReducer: I_CounterReducer
+  counterReducer: ICounterReducer
+  authReducer: IauthReducer
 }
+
 export default combineReducers<IApplicationState>({
-  counterReducer
+  counterReducer,
+  authReducer
 });
