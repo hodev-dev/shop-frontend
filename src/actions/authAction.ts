@@ -63,8 +63,8 @@ export const auth_status = () => async (dispatch: ThunkDispatch<IauthReducer, vo
     payload: {
       isLoading: false,
       isLoggedIn: auth_status_response.data.isLoggedIn,
-      user: [],
-      role: '',
+      user: auth_status_response.data.user,
+      role: auth_status_response.data.role.role,
       errors: [],
       message: ''
     }

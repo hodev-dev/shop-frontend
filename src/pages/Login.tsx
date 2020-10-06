@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import * as authActions from '../actions/authAction';
 import Header from '../components/Header';
 import IF, { ELSE, THEN } from '../components/Logics/IF';
@@ -11,7 +11,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { isLoading, isLoggedIn, user, role, errors, message } = useSelector((store: IApplicationState) => store.authReducer);
+  const { isLoading, isLoggedIn, errors, message } = useSelector((store: IApplicationState) => store.authReducer);
   const [_email, setEmail] = useState<string | null>('');
   const [_password, setPassword] = useState<string | null>('');
 
@@ -23,11 +23,8 @@ const Login = () => {
     if (isLoading) {
       dispatch(authActions.auth_status())
     }
-    if (isLoggedIn) {
-      history.replace('admin');
-    }
-    console.log(isLoading);
-  }, [isLoading, isLoggedIn, dispatch])
+    console.log(isLoggedIn);
+  }, [isLoading, isLoggedIn, dispatch, history])
 
   const handleEmail = (event: React.FormEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
@@ -65,34 +62,41 @@ const Login = () => {
           </div>
         </CASE>
         <DEFAULT>
-          <div className={"flex flex-col items-center justify-start w-full h-screen bg-dark-300"}>
-            <div dir={"rtl"} className={"flex flex-col items-center self-center justify-center w-2/6 h-auto p-5 mt-auto mb-auto ml-auto mr-auto rounded-lg bg-dark-200"}>
-              <img className={"w-64 h-64 "} src={LOGO} alt="" />
-              <form onSubmit={handleLogin}>
-                <div className={"w-full mt-5"}>
-                  <label className={"self-start text-2xl font-semibold text-white"} htmlFor="">Email</label>
-                  <input onChange={handleEmail} dir={"ltr"} className={"w-full h-16 p-5 text-2xl text-white outline-none bg-dark-100"} type="text" />
-                  {renderError("email")}
+          <IF variable={isLoggedIn} logic={"==="} check={false}>
+            <THEN>
+              <div className={"flex flex-col items-center justify-start w-full h-screen bg-dark-300"}>
+                <div dir={"rtl"} className={"flex flex-col items-center self-center justify-center w-2/6 h-auto p-5 mt-auto mb-auto ml-auto mr-auto rounded-lg bg-dark-200"}>
+                  <img className={"w-64 h-64 "} src={LOGO} alt="" />
+                  <form onSubmit={handleLogin}>
+                    <div className={"w-full mt-5"}>
+                      <label className={"self-start text-2xl font-semibold text-white"} htmlFor="">Email</label>
+                      <input onChange={handleEmail} dir={"ltr"} className={"w-full h-16 p-5 text-2xl text-white outline-none bg-dark-100"} type="text" />
+                      {renderError("email")}
+                    </div>
+                    <div className={"w-full mt-5"}>
+                      <label className={"self-start text-2xl font-semibold text-white"} htmlFor="">Password</label>
+                      <input onChange={handlePassword} dir={"ltr"} className={"w-full h-16 p-5 text-2xl text-white outline-none bg-dark-100"} type="password" />
+                      {renderError("password")}
+                    </div>
+                    <button className={"w-full h-16 mt-10 text-3xl font-bold text-white bg-indigo-600 rounded-lg outline-none hover:bg-indigo-700"}>Login</button>
+                    <IF variable={message} logic={'!=='} check={null}>
+                      <THEN>
+                        < h1 className={"text-2xl text-red-500"}>
+                          {message}
+                        </h1>
+                      </THEN>
+                      <ELSE>
+                        <h1>no message</h1>
+                      </ELSE>
+                    </IF>
+                  </form>
                 </div>
-                <div className={"w-full mt-5"}>
-                  <label className={"self-start text-2xl font-semibold text-white"} htmlFor="">Password</label>
-                  <input onChange={handlePassword} dir={"ltr"} className={"w-full h-16 p-5 text-2xl text-white outline-none bg-dark-100"} type="password" />
-                  {renderError("password")}
-                </div>
-                <button className={"w-full h-16 mt-10 text-3xl font-bold text-white bg-indigo-600 rounded-lg outline-none hover:bg-indigo-700"}>Login</button>
-                <IF variable={message} logic={'!=='} check={null}>
-                  <THEN>
-                    < h1 className={"text-2xl text-red-500"}>
-                      {message}
-                    </h1>
-                  </THEN>
-                  <ELSE>
-                    <h1>no message</h1>
-                  </ELSE>
-                </IF>
-              </form>
-            </div>
-          </div>
+              </div>
+            </THEN>
+            <ELSE>
+              <Redirect to={'/admin'} />
+            </ELSE>
+          </IF>
         </DEFAULT>
       </SWITCH>
     </>

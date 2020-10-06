@@ -14,7 +14,7 @@ export interface IauthAction {
 export interface IauthReducer {
   isLoading: boolean,
   isLoggedIn: boolean,
-  user: Array<any>,
+  user: any,
   role: string,
   errors: Array<string>,
   message: string
