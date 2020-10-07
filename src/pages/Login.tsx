@@ -23,7 +23,6 @@ const Login = () => {
     if (isLoading) {
       dispatch(authActions.auth_status())
     }
-    console.log(isLoggedIn);
   }, [isLoading, isLoggedIn, dispatch, history])
 
   const handleEmail = (event: React.FormEvent<HTMLInputElement>) => {
@@ -94,7 +93,7 @@ const Login = () => {
               </div>
             </THEN>
             <ELSE>
-              <Redirect to={'/admin'} />
+              <Redirect to={'/admin/dashboard'} />
             </ELSE>
           </IF>
         </DEFAULT>

@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     }).catch(() => {
       setCurrenciesStatus(currenciesStatusType.FAILED);
     });
-  }, [currenciesStatusType])
+  }, [])
 
   const handleInput = (e: any, index: number) => {
     currencies[index].rate = e.target.value;

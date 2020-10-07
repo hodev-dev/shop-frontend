@@ -37,7 +37,7 @@ const Routes = () => {
           <Route path="/login" component={Login} />
           <Route path="/giftcards" component={GiftCards} />
           <ProtectedRoute isLoading={isLoading} isLoggedIn={isLoggedIn}>
-            <Route path="/admin" component={AdminDashboard} />
+            <Route path="/admin/dashboard" component={AdminDashboard} />
           </ProtectedRoute>
         </Switch>
       </Router>
