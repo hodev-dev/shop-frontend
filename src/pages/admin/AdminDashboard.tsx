@@ -1,53 +1,78 @@
-import React, { useEffect } from 'react';
-import { IoIosKeypad, IoLogoGameControllerB, IoMdCard, IoMdList } from "react-icons/io";
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import * as authActions from '../../actions/authAction';
+import { AxiosResponse } from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import Sidebar from '../../components/admin/Sidebar';
 import Header from '../../components/Header';
+import SWITCH, { CASE, DEFAULT } from '../../components/Logics/Switch';
+import { Axios } from '../../helper/axios_config';
 import { IauthReducer } from '../../reducers/authReducer';
 import { IApplicationState } from '../../reducers/rootReducer';
 
 const AdminDashboard = () => {
-  const dispatch = useDispatch();
+
+  enum currenciesStatusType {
+    LOADING,
+    SUCCESS,
+    FAILED
+  }
+
   const { user } = useSelector((store: IApplicationState): IauthReducer => store.authReducer);
 
-  useEffect(() => {
-  }, [])
+  //currency request
+  const [currencies, setCurrencies] = useState<any>([]);
+  const [currenciesStatus, setCurrenciesStatus] = useState<number>(currenciesStatusType.LOADING);
 
-  const logout = () => {
-    dispatch(authActions.logout());
+  useEffect(() => {
+    const request_currency = async () => {
+      return await Axios.get('/api/currency');
+    }
+    request_currency().then((response: AxiosResponse) => {
+      setCurrenciesStatus(currenciesStatusType.SUCCESS);
+      setCurrencies(response.data);
+    }).catch(() => {
+      setCurrenciesStatus(currenciesStatusType.FAILED);
+    });
+  }, [currenciesStatusType])
+
+  const handleInput = (e: any, index: number) => {
+    currencies[index].rate = e.target.value;
+    setCurrencies([...currencies]);
+  }
+
+  const renderCurennies = () => {
+    return currencies.map((currency: any, index: number) => {
+      return (
+        <div key={index} className={"flex flex-row items-center w-full h-16 p-2 text-gray-500 border border-black rounded-lg bg-dark-100"}>
+          <h1 className={"flex items-center justify-center w-1/12 h-12"} >{currency.name}</h1>
+          <input value={1} disabled className={"w-4/12 h-12 text-2xl text-center text-green-300 outline-none bg-dark-200"} type="text" />
+          <h1 className={"flex items-center justify-center w-1/12 h-12 text-center"} >Toman</h1>
+          <input onChange={(e: any) => handleInput(e, index)} value={currency.rate} className={"w-4/12 h-12 text-2xl text-center text-green-200 outline-none bg-dark-200"} type="text" />
+          <button className={"w-4/12 h-12 ml-5 text-xl text-center text-gray-500 outline-none bg-dark-200"}>update</button>
+        </div>
+      )
+    });
   }
 
   return (
     <>
       <Header />
       <div className={"flex h-screen"}>
-        <div className={"flex w-10/12 h-auto bg-dark-200"}></div>
-        <div className={"flex flex-col w-2/12 h-auto border border-t-0 border-black bg-dark-300"}>
-          <div className={"flex flex-col items-center w-full h-32 p-3 border border-t-0 border-l-0 border-black bg-dark-200"}>
-            <h1 className={"w-full font-semibold text-gray-500 "}>{user.name}</h1>
-            <h1 className={"w-full text-gray-500 "}>{user.email}</h1>
-            <button onClick={logout} className={"flex items-center justify-center w-full h-12 mt-2 text-gray-500 bg-dark-300"}>
-              Log Out
-            </button>
+        <div className={"flex w-10/12 h-auto bg-dark-200"}>
+          <div className={"flex flex-col w-10/12 h-auto p-2 mx-auto"}>
+            <SWITCH variable={currenciesStatus}>
+              <CASE check={currenciesStatusType.SUCCESS}>
+                {renderCurennies()}
+              </CASE>
+              <CASE check={currenciesStatusType.FAILED}>
+                <h1 className={"text-3xl text-white"}>failed</h1>
+              </CASE>
+              <DEFAULT>
+                <h1 className={"text-3xl text-white"}>loading</h1>
+              </DEFAULT>
+            </SWITCH>
           </div>
-          <Link to={"/admin"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
-            <IoIosKeypad size={32} />
-            <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Dashboard</h1>
-          </Link>
-          <Link to={"/"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
-            <IoLogoGameControllerB size={32} />
-            <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Gamses</h1>
-          </Link>
-          <Link to={"/"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
-            <IoMdList size={32} />
-            <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Lists</h1>
-          </Link>
-          <Link to={"/"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
-            <IoMdCard size={32} />
-            <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Cards</h1>
-          </Link>
         </div>
+        <Sidebar user={user} />
       </div>
     </>
   )
