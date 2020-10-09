@@ -35,9 +35,9 @@ const Sidebar = (props: Iprops) => {
           <IoLogoGameControllerB size={32} />
           <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Gamses</h1>
         </Link>
-        <Link to={"/"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
+        <Link to={"/admin/collections"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
           <IoMdList size={32} />
-          <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Lists</h1>
+          <h1 className={"w-full ml-5 font-semibold text-gray-500 "}>Collections</h1>
         </Link>
         <Link to={"/"} className={"flex items-center w-full h-16 p-3 text-gray-500 border border-t-0 border-l-0 border-black hover:bg-dark-100 bg-dark-200"}>
           <IoMdCard size={32} />

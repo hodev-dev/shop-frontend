@@ -39,15 +39,17 @@ const Login = () => {
   }
 
   const renderError = (key: string) => {
-    const hasKey = errors.hasOwnProperty(key);
-    if (hasKey) {
-      return errors[key].map((messege: string, index: number) => {
-        return (
-          <div dir={"rtl"} key={index} className={"text-sm font-semibold text-red-500"}>
-            <h1>{messege}</h1>
-          </div>
-        )
-      });
+    if (errors) {
+      const hasKey = errors.hasOwnProperty(key);
+      if (hasKey) {
+        return errors[key].map((messege: string, index: number) => {
+          return (
+            <div dir={"rtl"} key={index} className={"text-sm font-semibold text-red-500"}>
+              <h1>{messege}</h1>
+            </div>
+          )
+        });
+      }
     }
   }
 

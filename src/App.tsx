@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -13,6 +14,7 @@ const store = createStore<IApplicationState, any, any, any>(reducers, composeWit
 const App = () => {
   return (
     <Provider store={store}>
+      <ToastContainer />
       <Routes />
     </Provider >
   );

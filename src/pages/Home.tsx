@@ -14,6 +14,8 @@ const Home = () => {
       <Hero />
       <GiftPanel />
       <Collection />
+      <Collection />
+      <Collection />
     </div >
   );
 }

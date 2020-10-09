@@ -6,7 +6,8 @@ import * as authActions from './actions/authAction';
 import './assets/css/tailwind.css';
 import ProtectedRoute from './components/Logics/ProtectedRoute';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminGames from './pages/admin/AdminGames';
+import AdminCollections from './pages/admin/collections/AdminCollections';
+import AdminGames from './pages/admin/games/AdminGames';
 import GiftCards from './pages/GiftCards';
 // pages
 import Home from './pages/Home';
@@ -40,6 +41,7 @@ const Routes = () => {
           <ProtectedRoute isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <Route path="/admin/dashboard" component={AdminDashboard} />
             <Route path="/admin/games" component={AdminGames} />
+            <Route path="/admin/collections" component={AdminCollections} />
           </ProtectedRoute>
         </Switch>
       </Router>

@@ -1,5 +1,6 @@
-import React from 'react'
-import { FaApple, FaPlaystation, FaSteamSymbol } from 'react-icons/fa'
+import React from 'react';
+import { FaPlaystation, FaSteamSymbol } from 'react-icons/fa';
+import { IoMdCard } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 const GiftPanel = () => {
@@ -9,13 +10,13 @@ const GiftPanel = () => {
         <Link to={"giftcards"}>
           <div className={"flex items-center justify-center w-64 h-16 text-3xl font-semibold leading-none text-purple-900 bg-white rounded-md hover:bg-purple-900 hover:text-white"}>
             <FaSteamSymbol />
-            <span className={"ml-4"}>Steam Wallet</span>
+            <span className={"ml-4"}>Steam Game</span>
           </div>
         </Link>
         <Link to={"giftcards"}>
           <div className={"flex items-center justify-center w-64 h-16 ml-5 text-3xl font-semibold leading-none text-black bg-white rounded-md hover:bg-black hover:text-white"}>
-            <FaApple />
-            <span className={"ml-4"}>Apple Store</span>
+            <IoMdCard />
+            <span className={"ml-4"}>Gift Card</span>
           </div>
         </Link>
         <Link to={"giftcards"}>
