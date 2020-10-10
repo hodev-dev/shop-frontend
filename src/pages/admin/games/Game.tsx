@@ -11,7 +11,7 @@ const Game = (props: { games: any }) => {
             <h1 className={"flex items-center justify-center w-1/6 mx-auto text-gray-200"}>{price.currency.name}</h1>
             <h1 className={"flex items-center justify-center w-1/6 mx-auto text-gray-200"}>{price.price / 100}</h1>
             <h1 className={"flex items-center justify-center w-1/6 mx-auto text-gray-200"}>{price.currency.rate}</h1>
-            <h1 className={"flex items-center justify-center w-1/6 mx-auto text-gray-200"}>{price.price / 100 * price.currency.rate}</h1>
+            <h1 className={"flex items-center justify-center w-1/6 mx-auto text-gray-200"}>{String(price.price / 100 * price.currency.rate).replace(/(.)(?=(\d{3})+$)/g, '$1,')}</h1>
           </div>
         )
       });

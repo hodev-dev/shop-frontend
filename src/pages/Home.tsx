@@ -1,5 +1,5 @@
 import React from 'react';
-import Collection from '../components/Collection';
+import Collections from '../components/Collection';
 import GiftPanel from '../components/GiftPanel';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -13,9 +13,7 @@ const Home = () => {
       <Header />
       <Hero />
       <GiftPanel />
-      <Collection />
-      <Collection />
-      <Collection />
+      <Collections collections={[]} />
     </div >
   );
 }

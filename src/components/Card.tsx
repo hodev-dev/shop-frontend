@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-const Card = () => {
+interface Iprops {
+  game: any
+}
+
+const GameCard = (props: Iprops) => {
+  const { game } = props;
+
+  useEffect(() => {
+    console.log({ game })
+  }, [])
+
+  const renderPrices = () => {
+
+  }
   return (
     <>
-      <div className={"h-auto mx-4 rounded-lg shadow-xl w-84 min-w-16 bg-gradient-to-t from-gray-800 to-dark-300"}>
-        <img className={"object-cover w-full h-64"} src={require('../assets/img/batman.jpg')} alt="" />
+      <div className={"h-auto ml-8 rounded-lg shadow-xl min-w-25 max-w-25 bg-gradient-to-t from-gray-800 to-dark-300"}>
+        <img className={"object-scale-down w-full h-34"} src={game.header_url} alt="" />
         <div className={"flex flex-col w-full h-24 p-4 overflow-hidden text-white"}>
           <h1 dir={'ltr'} className={"overflow-hidden text-xl font-semibold"}>
-            RollerCoaster Tycoon® 3: Complete Edition
+            {game.name}
           </h1>
         </div>
-        <div className={"flex items-center justify-center w-full h-16 text-yellow-200 border text-1xl border-dark-300"}>
-          <h1 className={"flex items-center justify-center w-1/2 h-auto"}>قیمت به دلار</h1>
+        <div className={"flex items-center justify-center w-full h-16 text-gray-200 border text-1xl border-dark-300"}>
+          <h1 className={"flex items-center justify-center w-1/2 h-auto"}>price</h1>
           <h1 className={"flex items-start justify-center w-1/2 h-auto"}>56$</h1>
         </div>
         <div className={"flex items-center justify-center w-full h-16 text-blue-200 border text-1xl border-dark-300"}>
@@ -24,4 +37,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default GameCard

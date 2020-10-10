@@ -154,6 +154,7 @@ module.exports = {
       '56': '14rem',
       '64': '16rem',
       '84': '26rem',
+      '100': '86rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundImage: {
@@ -351,6 +352,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       full: '100%',
+      '25': '25%',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -361,6 +363,7 @@ module.exports = {
     minWidth: {
       '0': '0',
       '16': '16.6%',
+      '25': '25%',
       full: '100%',
     },
     objectPosition: {
