@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import * as authActions from '../actions/authAction';
@@ -25,9 +25,9 @@ const Login = () => {
     }
   }, [isLoading, isLoggedIn, dispatch, history])
 
-  const handleEmail = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleEmail = useCallback((event: React.FormEvent<HTMLInputElement>) => {
     setEmail(event.currentTarget.value);
-  }
+  }, []);
 
   const handlePassword = (event: React.FormEvent<HTMLInputElement>) => {
     setPassword(event.currentTarget.value);
@@ -104,4 +104,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

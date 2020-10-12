@@ -58,6 +58,7 @@ const AdminCollections = () => {
   const add_collections = () => {
     const request = Axios.post('/api/collections', { name: collectionInput });
     request.then((result: AxiosResponse) => {
+      request_collections();
       toast.success('done')
     }).catch((err: AxiosError) => {
       toast.success('error')
@@ -67,6 +68,7 @@ const AdminCollections = () => {
   const add_game_to_collection = () => {
     const request = Axios.post('/api/collection_game', { steamID: gameIDInput, collection_name: select });
     request.then((result: AxiosResponse) => {
+      request_collections();
       toast.success('added');
     }).catch((err: AxiosError) => {
       toast.error('error')

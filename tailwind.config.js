@@ -352,7 +352,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       full: '100%',
-      '25': '25%',
+      '25': '23.3%',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -363,7 +363,7 @@ module.exports = {
     minWidth: {
       '0': '0',
       '16': '16.6%',
-      '25': '25%',
+      '25': '23.3%',
       full: '100%',
     },
     objectPosition: {
