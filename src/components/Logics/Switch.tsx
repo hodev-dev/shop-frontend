@@ -1,9 +1,4 @@
-import React from 'react'
-
-interface Props {
-    variable: any,
-    children: JSX.Element | Array<JSX.Element> | any
-}
+import React from 'react';
 
 const CASE = (props: any) => {
     return (
@@ -21,17 +16,17 @@ const DEFAULT = (props: any) => {
     )
 }
 
-const SWITCH = (props: Props) => {
+const SWITCH = (props: any) => {
     const { variable } = props;
+    var counter = 0;
 
     const renderCase = () => {
-        var counter = 0;
         return props.children.map((child: any) => {
             if (child.props.check === variable) {
                 counter++;
                 return child;
             } else {
-                if (child.props.check !== variable && child.type.name === "DEFAULT" && counter === 0) {
+                if (child.props.check === undefined && child.props.check !== variable && child.type.name === "DEFAULT" && counter === 0) {
                     return child;
                 } else {
                     return null;
@@ -47,6 +42,6 @@ const SWITCH = (props: Props) => {
     )
 }
 
-export default SWITCH
-export { CASE, DEFAULT }
+export default SWITCH;
+export { CASE, DEFAULT };
 

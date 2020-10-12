@@ -7,7 +7,7 @@ const GiftPanel = () => {
   return (
     <>
       <div className={"flex items-center justify-center w-full h-20 bg-contain border border-black bg-dark-300"}>
-        <Link to={"giftcards"}>
+        <Link to={"games"}>
           <div className={"flex items-center justify-center w-64 h-16 text-3xl font-semibold leading-none text-purple-900 bg-white rounded-md hover:bg-purple-900 hover:text-white"}>
             <FaSteamSymbol />
             <span className={"ml-4"}>Steam Game</span>
