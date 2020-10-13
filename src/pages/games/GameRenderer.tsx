@@ -1,19 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface Iprops {
-  game: any
-}
-
-const GameCard = (props: Iprops) => {
-  const { game } = props;
-
-  useEffect(() => {
-    console.log({ game })
-  }, [game])
-
-
-  const renderPrice = () => {
+const GamesRenderer = (props: any) => {
+  const { page } = props;
+  const renderPrice = (game: any) => {
     if (game.prices.length > 0) {
       return (
         <>
@@ -57,25 +47,23 @@ const GameCard = (props: Iprops) => {
         </>
       )
     }
-
   }
-
-  return (
-    <>
-      <div className={"h-auto ml-8 rounded-lg shadow-xl min-w-25 max-w-25 bg-gradient-to-t from-gray-800 to-dark-300"}>
-        <img className={"object-scale-down w-full h-34"} src={game.header_url} alt="" />
+  return page.data.map((game: any, index: number) => {
+    return (
+      <div key={index} className={"flex flex-col flex-wrap w-4/12 h-auto bg-gradient-to-t from-gray-800 to-dark-300"}>
+        <img className={"w-full rounded-lg h-34"} src={game.header_url} alt="" />
         <div className={"flex flex-col w-full h-auto overflow-hidden text-white"}>
           <h1 dir={'ltr'} className={"flex items-center h-16 mx-5 overflow-hidden text-xl font-semibold truncate"}>
             {game.name}
           </h1>
           <div dir={"rtl"}>
-            {renderPrice()}
+            {renderPrice(game)}
           </div>
         </div>
         <Link to={{ pathname: 'gameinfo', state: { steamID: game.steam_id } }} className={"flex items-center justify-center w-full h-16 text-green-300 bg-green-800 border border-t-0 border-black text-1xl"}>اطلاعات بازی</Link>
       </div>
-    </>
-  )
+    );
+  });
 }
 
-export default GameCard
+export default GamesRenderer;

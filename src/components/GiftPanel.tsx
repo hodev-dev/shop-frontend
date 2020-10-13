@@ -14,13 +14,13 @@ const GiftPanel = () => {
           </div>
         </Link>
         <Link to={"giftcards"}>
-          <div className={"flex items-center justify-center w-64 h-16 ml-5 text-3xl font-semibold leading-none text-black bg-white rounded-md hover:bg-black hover:text-white"}>
+          <div className={"flex items-center justify-center w-64 h-16 ml-5 text-3xl font-semibold leading-none text-pink-900 bg-white rounded-md hover:bg-pink-900 hover:text-white"}>
             <IoMdCard />
             <span className={"ml-4"}>Gift Card</span>
           </div>
         </Link>
         <Link to={"giftcards"}>
-          <div className={"flex items-center justify-center w-64 h-16 ml-5 text-3xl font-semibold leading-none text-blue-800 bg-white rounded-md hover:bg-blue-800 hover:text-white"}>
+          <div className={"flex items-center justify-center w-64 h-16 ml-5 text-3xl font-semibold leading-none text-blue-900 bg-white rounded-md hover:bg-blue-900 hover:text-white"}>
             <FaPlaystation />
             <span className={"ml-4"}>Playstation</span>
           </div>

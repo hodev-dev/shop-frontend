@@ -7,7 +7,8 @@ import ProtectedRoute from './components/Logics/ProtectedRoute';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCollections from './pages/admin/collections/AdminCollections';
 import AdminGames from './pages/admin/games/AdminGames';
-import Games from './pages/Games';
+import Games from './pages/games/Games';
+import GameInfo from './pages/game_info/GameInfo';
 import GiftCards from './pages/GiftCards';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -38,6 +39,7 @@ const Routes = () => {
           <Route path="/login" component={Login} />
           <Route path="/giftcards" component={GiftCards} />
           <Route path="/games" component={Games} />
+          <Route path="/gameinfo" component={GameInfo} />
           <ProtectedRoute isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <Route path="/admin/dashboard" component={AdminDashboard} />
             <Route path="/admin/games" component={AdminGames} />
